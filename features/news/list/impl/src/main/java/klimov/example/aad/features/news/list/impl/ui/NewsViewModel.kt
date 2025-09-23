@@ -13,7 +13,7 @@ import klimov.example.aad.features.news.worker.api.WorkManagerService
 import klimov.example.aad.news.list.api.NewsNetworkApi
 import klimov.example.aad.news.list.api.NewsRefreshProvider
 import klimov.example.aad.sdk.storage.news.NewsDatabase
-import klimov.example.aad.sdk.storage.news.entity.News
+import klimov.example.aad.sdk.storage.news.entity.NewsRoomEntity
 import kotlinx.coroutines.flow.Flow
 
 internal class NewsViewModel(
@@ -21,10 +21,10 @@ internal class NewsViewModel(
     private val newsDatabase: NewsDatabase,
     private val workManagerService: WorkManagerService
 )  : ViewModel(), NewsRefreshProvider {
-    private var pagingItems: LazyPagingItems<News>? = null
+    private var pagingItems: LazyPagingItems<NewsRoomEntity>? = null
 
     @OptIn(ExperimentalPagingApi::class)
-    fun getNews(): Flow<PagingData<News>> {
+    fun getNews(): Flow<PagingData<NewsRoomEntity>> {
         val mediator = NewsRemoteMediator(newsNetworkApi, newsDatabase)
 
         val pager = Pager(
@@ -39,7 +39,7 @@ internal class NewsViewModel(
             .cachedIn(viewModelScope)
     }
 
-    fun attachPagingItems(paging: LazyPagingItems<News>?) {
+    fun attachPagingItems(paging: LazyPagingItems<NewsRoomEntity>?) {
         pagingItems = paging
     }
 

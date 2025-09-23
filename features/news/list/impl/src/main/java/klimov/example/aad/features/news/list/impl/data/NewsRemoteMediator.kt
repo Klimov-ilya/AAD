@@ -7,15 +7,15 @@ import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import klimov.example.aad.news.list.api.NewsNetworkApi
 import klimov.example.aad.sdk.storage.news.NewsDatabase
-import klimov.example.aad.sdk.storage.news.entity.News
-import klimov.example.aad.sdk.storage.news.entity.RemoteKeys
+import klimov.example.aad.sdk.storage.news.entity.NewsRoomEntity
+import klimov.example.aad.sdk.storage.news.entity.RemoteKeysRoomEntity
 import java.util.concurrent.TimeUnit
 
 @OptIn(ExperimentalPagingApi::class)
 internal class NewsRemoteMediator(
     private val networkApi: NewsNetworkApi,
     private val storageApi: NewsDatabase
-) : RemoteMediator<Int, News>() {
+) : RemoteMediator<Int, NewsRoomEntity>() {
 
     override suspend fun initialize(): InitializeAction {
         val cacheTimeout = TimeUnit.MILLISECONDS.convert(1, TimeUnit.HOURS)
@@ -29,7 +29,7 @@ internal class NewsRemoteMediator(
 
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<Int, News>
+        state: PagingState<Int, NewsRoomEntity>
     ): MediatorResult {
         val page = when (loadType) {
             LoadType.REFRESH -> {
@@ -65,7 +65,7 @@ internal class NewsRemoteMediator(
                 val nextKey = if (endOfPaginationReached) null else page +1
 
                 val remoteKeys = news.map { new ->
-                    RemoteKeys(
+                    RemoteKeysRoomEntity(
                         newsId = new.id,
                         prevKey = prevKey,
                         currentPage = page,
@@ -83,7 +83,7 @@ internal class NewsRemoteMediator(
         }
     }
 
-    private suspend fun getRemoteKeyClosesToCurrentPosition(state: PagingState<Int, News>): RemoteKeys? {
+    private suspend fun getRemoteKeyClosesToCurrentPosition(state: PagingState<Int, NewsRoomEntity>): RemoteKeysRoomEntity? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { id ->
                 storageApi.getRemoteKeysDao().getRemoteKeyByNewsId(id)
@@ -91,7 +91,7 @@ internal class NewsRemoteMediator(
         }
     }
 
-    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, News>): RemoteKeys? {
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, NewsRoomEntity>): RemoteKeysRoomEntity? {
         return state.pages.firstOrNull {
             it.data.isNotEmpty()
         }?.data?.firstOrNull()?.let { movie ->
@@ -99,7 +99,7 @@ internal class NewsRemoteMediator(
         }
     }
 
-    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, News>): RemoteKeys? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, NewsRoomEntity>): RemoteKeysRoomEntity? {
         return state.pages.lastOrNull {
             it.data.isNotEmpty()
         }?.data?.lastOrNull()?.let { movie ->

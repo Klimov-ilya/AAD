@@ -3,6 +3,7 @@ package klimov.example.aad.features.news.list.impl.ui
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
@@ -18,7 +19,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import klimov.example.aad.sdk.storage.news.entity.News
+import klimov.example.aad.sdk.storage.news.entity.NewsRoomEntity
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -27,7 +28,7 @@ internal fun NewsScreen(
     appViewModel: NewsViewModel = koinViewModel()
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
-    val news: LazyPagingItems<News> = appViewModel.getNews().collectAsLazyPagingItems()
+    val news: LazyPagingItems<NewsRoomEntity> = appViewModel.getNews().collectAsLazyPagingItems()
     Column(modifier = modifier.padding(start = 4.dp, end = 4.dp, bottom = 96.dp)) {
         Spacer(Modifier.padding(top = 32.dp))
         LazyColumn {
@@ -58,11 +59,12 @@ internal fun NewsScreen(
 }
 
 @Composable
-fun RenderNews(item: News) {
-    Box(modifier = Modifier.padding(top = 4.dp)) {
+fun RenderNews(item: NewsRoomEntity) {
+    Box(modifier = Modifier.padding(top = 8.dp)) {
         Card {
-            Column(modifier = Modifier.padding(4.dp)) {
+            Column(modifier = Modifier.padding(16.dp)) {
                 Text(text = item.title, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(text = item.details)
             }
         }

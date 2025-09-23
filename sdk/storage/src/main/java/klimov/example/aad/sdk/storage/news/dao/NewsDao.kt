@@ -5,16 +5,16 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import klimov.example.aad.sdk.storage.news.entity.News
+import klimov.example.aad.sdk.storage.news.entity.NewsRoomEntity
 
 @Dao
 interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(news: List<News>)
+    suspend fun insertAll(news: List<NewsRoomEntity>)
 
-    @Query("Select * from news Order by page")
-    fun getNews(): PagingSource<Int, News>
+    @Query("Select * from newsroomentity Order by page")
+    fun getNews(): PagingSource<Int, NewsRoomEntity>
 
-    @Query("Delete from news")
+    @Query("Delete from newsroomentity")
     suspend fun clearAllNews()
 }

@@ -4,13 +4,13 @@ import android.content.Context
 import com.google.gson.Gson
 import klimov.example.aad.news.list.api.NewsNetworkApi
 import klimov.example.aad.news.list.api.NewsResponse
-import klimov.example.aad.sdk.storage.news.entity.News
+import klimov.example.aad.sdk.storage.news.entity.NewsRoomEntity
 
 internal class NewsNetworkApiImpl(
     application: Context,
     fileName: String
 ) : NewsNetworkApi {
-    private var source: List<News>? = null
+    private var source: List<NewsRoomEntity>? = null
     private val maxItem = 10
     private val size: Int
         get() =  source?.size ?: 0
@@ -41,6 +41,6 @@ internal class NewsNetworkApiImpl(
 
         val json = String(buffer, charset = Charsets.UTF_8)
         val gson = Gson()
-        source = gson.fromJson(json, Array<News>::class.java).toList()
+        source = gson.fromJson(json, Array<NewsRoomEntity>::class.java).toList()
     }
 }
