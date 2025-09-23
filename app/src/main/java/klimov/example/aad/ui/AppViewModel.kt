@@ -11,9 +11,9 @@ import androidx.paging.compose.LazyPagingItems
 import klimov.example.aad.data.NewsRemoteMediator
 import klimov.example.aad.data.database.NewsDatabase
 import klimov.example.aad.data.database.entity.News
-import klimov.example.aad.data.setting_repository.SettingContainer
+import klimov.example.aad.features.settings.api.SettingsContainer
+import klimov.example.aad.features.settings.api.SettingsRepository
 import klimov.example.aad.ui.contract.NewsNetworkApi
-import klimov.example.aad.ui.contract.SettingsRepository
 import klimov.example.aad.ui.contract.WorkManagerService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -21,8 +21,7 @@ import kotlinx.coroutines.launch
 class AppViewModel(
     private val newsNetworkApi: NewsNetworkApi,
     private val newsDatabase: NewsDatabase,
-    private val workManagerService: WorkManagerService,
-    private val settingsRepository: SettingsRepository
+    private val workManagerService: WorkManagerService
 )  : ViewModel() {
     private var pagingItems: LazyPagingItems<News>? = null
 
@@ -60,16 +59,6 @@ class AppViewModel(
 
     fun cancelPeriodicRefresh() {
         workManagerService.cancelRefreshWork()
-    }
-
-    fun saveSetting(periodic: Long, delayed: Long) {
-        viewModelScope.launch {
-            settingsRepository.saveSettings(periodic, delayed)
-        }
-    }
-
-    fun getCurrentSettings(): SettingContainer {
-        return settingsRepository.state.value
     }
 
     companion object {

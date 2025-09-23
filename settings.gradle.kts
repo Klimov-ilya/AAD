@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "AAD"
 include(":app")
+include(":features:settings:impl")
+include(":features:settings:api")

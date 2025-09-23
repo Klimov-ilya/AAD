@@ -7,11 +7,9 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.room.Room
 import klimov.example.aad.data.database.NewsDatabase
 import klimov.example.aad.data.network.NewsNetworkApiImpl
-import klimov.example.aad.data.setting_repository.SettingsRepositoryImpl
 import klimov.example.aad.data.work_manager.WorkManagerServiceImpl
 import klimov.example.aad.ui.AppViewModel
 import klimov.example.aad.ui.contract.NewsNetworkApi
-import klimov.example.aad.ui.contract.SettingsRepository
 import klimov.example.aad.ui.contract.WorkManagerService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -39,9 +37,8 @@ val appModule = module {
     factory<DataStore<Preferences>> {
         provideDataStore(androidContext())
     }
-    single<SettingsRepository> { SettingsRepositoryImpl(get()) }
     single<WorkManagerService> { WorkManagerServiceImpl(androidApplication(), get()) }
-    single<AppViewModel> { AppViewModel(get(), get(), get(), get()) }
+    single<AppViewModel> { AppViewModel(get(), get(), get()) }
 }
 
 fun provideDataStore(context: Context): DataStore<Preferences> {
