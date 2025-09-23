@@ -1,16 +1,14 @@
 package klimov.example.aad.data
 
-import android.net.http.HttpException
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import klimov.example.aad.data.database.NewsDatabase
-import klimov.example.aad.data.database.entity.News
-import klimov.example.aad.data.database.entity.RemoteKeys
+import klimov.example.aad.sdk.storage.news.entity.News
+import klimov.example.aad.sdk.storage.news.NewsDatabase
+import klimov.example.aad.sdk.storage.news.entity.RemoteKeys
 import klimov.example.aad.ui.contract.NewsNetworkApi
-import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 @OptIn(ExperimentalPagingApi::class)

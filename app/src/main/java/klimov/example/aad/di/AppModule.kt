@@ -4,8 +4,6 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
-import androidx.room.Room
-import klimov.example.aad.data.database.NewsDatabase
 import klimov.example.aad.data.network.NewsNetworkApiImpl
 import klimov.example.aad.data.work_manager.WorkManagerServiceImpl
 import klimov.example.aad.ui.AppViewModel
@@ -25,14 +23,6 @@ val appModule = module {
             application = androidContext(),
             fileName = "news.json"
         )
-    }
-    single<NewsDatabase> {
-        Room.databaseBuilder(
-            androidContext(),
-            NewsDatabase::class.java,
-            "news_database"
-        )
-            .build()
     }
     factory<DataStore<Preferences>> {
         provideDataStore(androidContext())

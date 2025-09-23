@@ -1,4 +1,4 @@
-package klimov.example.aad.data.database.entity
+package klimov.example.aad.sdk.storage.news.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
