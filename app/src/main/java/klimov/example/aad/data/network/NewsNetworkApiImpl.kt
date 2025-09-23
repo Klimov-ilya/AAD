@@ -2,7 +2,7 @@ package klimov.example.aad.data.network
 
 import android.content.Context
 import com.google.gson.Gson
-import klimov.example.aad.data.database.entity.News
+import klimov.example.aad.sdk.storage.news.entity.News
 import klimov.example.aad.ui.contract.NewsNetworkApi
 import kotlin.text.Charsets.UTF_8
 

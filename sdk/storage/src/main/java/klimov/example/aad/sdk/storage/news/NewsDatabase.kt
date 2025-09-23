@@ -1,9 +1,11 @@
-package klimov.example.aad.data.database
+package klimov.example.aad.sdk.storage.news
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import klimov.example.aad.data.database.entity.News
-import klimov.example.aad.data.database.entity.RemoteKeys
+import klimov.example.aad.sdk.storage.news.dao.NewsDao
+import klimov.example.aad.sdk.storage.news.dao.RemoteKeysDao
+import klimov.example.aad.sdk.storage.news.entity.News
+import klimov.example.aad.sdk.storage.news.entity.RemoteKeys
 
 @Database(
     entities = [News::class, RemoteKeys::class],

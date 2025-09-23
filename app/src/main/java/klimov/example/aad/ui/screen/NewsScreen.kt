@@ -18,7 +18,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import klimov.example.aad.data.database.entity.News
+import klimov.example.aad.sdk.storage.news.entity.News
 import klimov.example.aad.ui.AppViewModel
 import org.koin.androidx.compose.koinViewModel
 

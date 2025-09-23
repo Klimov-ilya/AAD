@@ -1,10 +1,10 @@
-package klimov.example.aad.data.database
+package klimov.example.aad.sdk.storage.news.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import klimov.example.aad.data.database.entity.RemoteKeys
+import klimov.example.aad.sdk.storage.news.entity.RemoteKeys
 
 @Dao
 interface RemoteKeysDao {

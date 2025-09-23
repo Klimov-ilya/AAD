@@ -43,6 +43,7 @@ android {
 dependencies {
     implementation(project(":features:settings:api"))
     implementation(project(":features:settings:impl"))
+    implementation(project(":sdk:storage"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
