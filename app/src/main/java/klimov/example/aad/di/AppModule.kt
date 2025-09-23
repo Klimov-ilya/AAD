@@ -38,7 +38,7 @@ val appModule = module {
         provideDataStore(androidContext())
     }
     single<WorkManagerService> { WorkManagerServiceImpl(androidApplication(), get()) }
-    single<AppViewModel> { AppViewModel(get(), get(), get(), get()) }
+    single<AppViewModel> { AppViewModel(get(), get(), get()) }
 }
 
 fun provideDataStore(context: Context): DataStore<Preferences> {

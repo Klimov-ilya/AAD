@@ -21,8 +21,7 @@ import kotlinx.coroutines.launch
 class AppViewModel(
     private val newsNetworkApi: NewsNetworkApi,
     private val newsDatabase: NewsDatabase,
-    private val workManagerService: WorkManagerService,
-    private val settingsRepository: SettingsRepository
+    private val workManagerService: WorkManagerService
 )  : ViewModel() {
     private var pagingItems: LazyPagingItems<News>? = null
 
@@ -60,16 +59,6 @@ class AppViewModel(
 
     fun cancelPeriodicRefresh() {
         workManagerService.cancelRefreshWork()
-    }
-
-    fun saveSetting(periodic: Long, delayed: Long) {
-        viewModelScope.launch {
-            settingsRepository.saveSettings(periodic, delayed)
-        }
-    }
-
-    fun getCurrentSettings(): SettingsContainer {
-        return settingsRepository.state.value
     }
 
     companion object {

@@ -1,4 +1,4 @@
-package klimov.example.aad.ui.screen
+package klimov.example.aad.features.settings.impl.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,17 +18,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import klimov.example.aad.R
 import klimov.example.aad.features.settings.api.SettingsContainer
-import klimov.example.aad.ui.AppViewModel
+import klimov.example.aad.features.settings.impl.R
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun SettingScreen(
+internal fun SettingsScreen(
     modifier: Modifier = Modifier,
-    appViewModel: AppViewModel = koinViewModel()
+    settingsViewModel: SettingsViewModel = koinViewModel()
 ) {
-    val currentSetting = appViewModel.getCurrentSettings()
+    val currentSetting = settingsViewModel.getCurrentSettings()
     var periodic by rememberSaveable { mutableStateOf(currentSetting.periodic.toString()) }
     var delayed by rememberSaveable { mutableStateOf(currentSetting.delayed.toString()) }
     Column(
@@ -63,7 +62,7 @@ fun SettingScreen(
         Button(onClick = {
             val periodicValue = periodic.toLongOrNull() ?: SettingsContainer.DEFAULT_REFRESH_PERIOD_IN_MINUTE
             val delayValue = delayed.toLongOrNull() ?: SettingsContainer.FIRST_LAUNCH_DELAY
-            appViewModel.saveSetting(periodic = periodicValue, delayed = delayValue)
+            settingsViewModel.saveSetting(periodic = periodicValue, delayed = delayValue)
         }) {
             Text(stringResource(R.string.save_setting))
         }
