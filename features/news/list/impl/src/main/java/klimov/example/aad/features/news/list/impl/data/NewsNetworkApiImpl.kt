@@ -1,12 +1,12 @@
-package klimov.example.aad.data.network
+package klimov.example.aad.features.news.list.impl.data
 
 import android.content.Context
 import com.google.gson.Gson
+import klimov.example.aad.news.list.api.NewsNetworkApi
+import klimov.example.aad.news.list.api.NewsResponse
 import klimov.example.aad.sdk.storage.news.entity.News
-import klimov.example.aad.ui.contract.NewsNetworkApi
-import kotlin.text.Charsets.UTF_8
 
-class NewsNetworkApiImpl(
+internal class NewsNetworkApiImpl(
     application: Context,
     fileName: String
 ) : NewsNetworkApi {
@@ -39,7 +39,7 @@ class NewsNetworkApiImpl(
         inputStream.read(buffer)
         inputStream.close()
 
-        val json = String(buffer, charset = UTF_8)
+        val json = String(buffer, charset = Charsets.UTF_8)
         val gson = Gson()
         source = gson.fromJson(json, Array<News>::class.java).toList()
     }

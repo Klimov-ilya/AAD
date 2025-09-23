@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "klimov.example.aad.features.settings.api"
+    namespace = "klimov.example.aad.news.list.api"
     compileSdk = 36
 
     defaultConfig {
@@ -25,6 +25,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":sdk:storage"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
 }

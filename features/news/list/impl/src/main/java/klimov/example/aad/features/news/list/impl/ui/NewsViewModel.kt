@@ -1,4 +1,4 @@
-package klimov.example.aad.ui
+package klimov.example.aad.features.news.list.impl.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,18 +8,19 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.compose.LazyPagingItems
-import klimov.example.aad.data.NewsRemoteMediator
+import klimov.example.aad.features.news.list.impl.data.NewsRemoteMediator
+import klimov.example.aad.features.news.worker.api.WorkManagerService
+import klimov.example.aad.news.list.api.NewsNetworkApi
+import klimov.example.aad.news.list.api.NewsRefreshProvider
 import klimov.example.aad.sdk.storage.news.NewsDatabase
 import klimov.example.aad.sdk.storage.news.entity.News
-import klimov.example.aad.ui.contract.NewsNetworkApi
-import klimov.example.aad.ui.contract.WorkManagerService
 import kotlinx.coroutines.flow.Flow
 
-class AppViewModel(
+internal class NewsViewModel(
     private val newsNetworkApi: NewsNetworkApi,
     private val newsDatabase: NewsDatabase,
     private val workManagerService: WorkManagerService
-)  : ViewModel() {
+)  : ViewModel(), NewsRefreshProvider {
     private var pagingItems: LazyPagingItems<News>? = null
 
     @OptIn(ExperimentalPagingApi::class)
@@ -46,7 +47,7 @@ class AppViewModel(
         pagingItems = null
     }
 
-    fun refreshData() {
+    override fun refreshData() {
         pagingItems?.refresh()
     }
 

@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "klimov.example.aad.features.settings.api"
+    namespace = "klimov.example.aad.features.news.worker"
     compileSdk = 36
 
     defaultConfig {
@@ -19,12 +18,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.activity.compose)
+    implementation(project(":features:news:list:api"))
+    implementation(project(":features:settings:api"))
+
+    implementation(libs.androidx.work.manager.ktx)
+    implementation(libs.koin.compose)
 }

@@ -16,10 +16,11 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.compose.runtime.getValue
 import klimov.example.aad.R
 import klimov.example.aad.features.settings.api.SettingsNavigation
-import klimov.example.aad.ui.screen.NewsScreen
+import klimov.example.aad.news.list.api.NewsNavigation
 
 @Composable
 fun BottomBarNavGraph(
+    newsNavigation: NewsNavigation,
     settingsNavigation: SettingsNavigation,
     navController: NavHostController
 ) {
@@ -28,7 +29,7 @@ fun BottomBarNavGraph(
         startDestination = BottomBarScreen.News.route
     ) {
         composable(route = BottomBarScreen.News.route) {
-            NewsScreen()
+            newsNavigation.getScreen().invoke()
         }
         composable(route = BottomBarScreen.Settings.route) {
             settingsNavigation.getScreen().invoke()
