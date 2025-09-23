@@ -19,7 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import klimov.example.aad.R
-import klimov.example.aad.data.setting_repository.SettingContainer
+import klimov.example.aad.features.settings.api.SettingsContainer
 import klimov.example.aad.ui.AppViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -61,8 +61,8 @@ fun SettingScreen(
         )
         Spacer(Modifier.padding(top = 16.dp))
         Button(onClick = {
-            val periodicValue = periodic.toLongOrNull() ?: SettingContainer.DEFAULT_REFRESH_PERIOD_IN_MINUTE
-            val delayValue = delayed.toLongOrNull() ?: SettingContainer.FIRST_LAUNCH_DELAY
+            val periodicValue = periodic.toLongOrNull() ?: SettingsContainer.DEFAULT_REFRESH_PERIOD_IN_MINUTE
+            val delayValue = delayed.toLongOrNull() ?: SettingsContainer.FIRST_LAUNCH_DELAY
             appViewModel.saveSetting(periodic = periodicValue, delayed = delayValue)
         }) {
             Text(stringResource(R.string.save_setting))

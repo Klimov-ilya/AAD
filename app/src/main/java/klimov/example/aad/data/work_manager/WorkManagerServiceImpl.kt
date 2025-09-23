@@ -8,8 +8,8 @@ import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
-import klimov.example.aad.data.setting_repository.SettingContainer
-import klimov.example.aad.ui.contract.SettingsRepository
+import klimov.example.aad.features.settings.api.SettingsContainer
+import klimov.example.aad.features.settings.api.SettingsRepository
 import klimov.example.aad.ui.contract.WorkManagerService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,8 +22,8 @@ class WorkManagerServiceImpl(
     private val settingsRepository: SettingsRepository,
     private val isScope: CoroutineScope = CoroutineScope(Job() + Dispatchers.IO)
 ) : WorkManagerService {
-    private var period: Long = SettingContainer.DEFAULT_REFRESH_PERIOD_IN_MINUTE
-    private var delayed: Long = SettingContainer.FIRST_LAUNCH_DELAY
+    private var period: Long = SettingsContainer.DEFAULT_REFRESH_PERIOD_IN_MINUTE
+    private var delayed: Long = SettingsContainer.FIRST_LAUNCH_DELAY
 
     init {
         isScope.launch {

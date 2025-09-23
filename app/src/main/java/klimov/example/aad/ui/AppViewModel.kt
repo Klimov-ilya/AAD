@@ -11,9 +11,9 @@ import androidx.paging.compose.LazyPagingItems
 import klimov.example.aad.data.NewsRemoteMediator
 import klimov.example.aad.data.database.NewsDatabase
 import klimov.example.aad.data.database.entity.News
-import klimov.example.aad.data.setting_repository.SettingContainer
+import klimov.example.aad.features.settings.api.SettingsContainer
+import klimov.example.aad.features.settings.api.SettingsRepository
 import klimov.example.aad.ui.contract.NewsNetworkApi
-import klimov.example.aad.ui.contract.SettingsRepository
 import klimov.example.aad.ui.contract.WorkManagerService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -68,7 +68,7 @@ class AppViewModel(
         }
     }
 
-    fun getCurrentSettings(): SettingContainer {
+    fun getCurrentSettings(): SettingsContainer {
         return settingsRepository.state.value
     }
 

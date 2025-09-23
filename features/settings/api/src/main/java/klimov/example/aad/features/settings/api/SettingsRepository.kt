@@ -1,10 +1,9 @@
-package klimov.example.aad.ui.contract
+package klimov.example.aad.features.settings.api
 
-import klimov.example.aad.data.setting_repository.SettingContainer
 import kotlinx.coroutines.flow.StateFlow
 
 interface SettingsRepository {
-    val state: StateFlow<SettingContainer>
+    val state: StateFlow<SettingsContainer>
     suspend fun saveSettings(periodic: Long, delayed: Long)
     suspend fun readSettings()
 }
