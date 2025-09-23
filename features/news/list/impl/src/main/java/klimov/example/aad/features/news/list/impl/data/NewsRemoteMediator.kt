@@ -1,18 +1,18 @@
-package klimov.example.aad.data
+package klimov.example.aad.features.news.list.impl.data
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import klimov.example.aad.sdk.storage.news.entity.News
+import klimov.example.aad.news.list.api.NewsNetworkApi
 import klimov.example.aad.sdk.storage.news.NewsDatabase
+import klimov.example.aad.sdk.storage.news.entity.News
 import klimov.example.aad.sdk.storage.news.entity.RemoteKeys
-import klimov.example.aad.ui.contract.NewsNetworkApi
 import java.util.concurrent.TimeUnit
 
 @OptIn(ExperimentalPagingApi::class)
-class NewsRemoteMediator(
+internal class NewsRemoteMediator(
     private val networkApi: NewsNetworkApi,
     private val storageApi: NewsDatabase
 ) : RemoteMediator<Int, News>() {

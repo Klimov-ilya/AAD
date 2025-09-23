@@ -1,4 +1,4 @@
-package klimov.example.aad.ui.screen
+package klimov.example.aad.features.news.list.impl.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,13 +19,12 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import klimov.example.aad.sdk.storage.news.entity.News
-import klimov.example.aad.ui.AppViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun NewsScreen(
+internal fun NewsScreen(
     modifier: Modifier = Modifier,
-    appViewModel: AppViewModel = koinViewModel()
+    appViewModel: NewsViewModel = koinViewModel()
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
     val news: LazyPagingItems<News> = appViewModel.getNews().collectAsLazyPagingItems()

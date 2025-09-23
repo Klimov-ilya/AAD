@@ -1,4 +1,4 @@
-package klimov.example.aad.data.work_manager
+package klimov.example.aad.features.news.worker.impl
 
 import android.content.Context
 import androidx.work.BackoffPolicy
@@ -8,16 +8,16 @@ import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import klimov.example.aad.features.news.worker.api.WorkManagerService
 import klimov.example.aad.features.settings.api.SettingsContainer
 import klimov.example.aad.features.settings.api.SettingsRepository
-import klimov.example.aad.ui.contract.WorkManagerService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
-class WorkManagerServiceImpl(
+internal class WorkManagerServiceImpl(
     private val context: Context,
     private val settingsRepository: SettingsRepository,
     private val isScope: CoroutineScope = CoroutineScope(Job() + Dispatchers.IO)

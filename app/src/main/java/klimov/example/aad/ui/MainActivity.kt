@@ -10,12 +10,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import klimov.example.aad.features.settings.api.SettingsNavigation
+import klimov.example.aad.news.list.api.NewsNavigation
 import klimov.example.aad.ui.navigation.BottomBar
 import klimov.example.aad.ui.navigation.BottomBarNavGraph
 import klimov.example.aad.ui.theme.AADTheme
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
+    private val newsNavigation: NewsNavigation by inject<NewsNavigation>()
     private val settingsNavigation: SettingsNavigation by inject<SettingsNavigation>()
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -32,6 +34,7 @@ class MainActivity : ComponentActivity() {
                     }
                 ) {
                     BottomBarNavGraph(
+                        newsNavigation = newsNavigation,
                         settingsNavigation = settingsNavigation,
                         navController = navController
                     )

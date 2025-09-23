@@ -1,4 +1,4 @@
-package klimov.example.aad.data.network
+package klimov.example.aad.news.list.api
 
 import klimov.example.aad.sdk.storage.news.entity.News
 
