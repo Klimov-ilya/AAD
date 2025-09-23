@@ -1,4 +1,4 @@
-package klimov.example.aad.ui.theme
+package klimov.example.aad.sdk.ui
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

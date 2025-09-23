@@ -1,4 +1,4 @@
-package klimov.example.aad.ui.theme
+package klimov.example.aad.sdk.ui
 
 import androidx.compose.ui.graphics.Color
 

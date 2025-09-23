@@ -1,4 +1,4 @@
-package klimov.example.aad.ui.theme
+package klimov.example.aad.sdk.ui
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

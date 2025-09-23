@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "klimov.example.aad.features.settings.impl"
+    namespace = "klimov.example.aad.sdk.ui"
     compileSdk = 36
 
     defaultConfig {
@@ -25,16 +25,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":features:settings:api"))
-    implementation(project(":content"))
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.data.store)
-    implementation(libs.koin.compose)
-
+    implementation(libs.androidx.material3)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.material3)
 }

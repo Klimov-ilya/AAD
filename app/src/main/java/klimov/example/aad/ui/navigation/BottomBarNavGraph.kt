@@ -14,9 +14,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.compose.runtime.getValue
-import klimov.example.aad.R
 import klimov.example.aad.features.settings.api.SettingsNavigation
 import klimov.example.aad.news.list.api.NewsNavigation
+import klimov.example.aad.content.R as ContentR
 
 @Composable
 fun BottomBarNavGraph(
@@ -48,7 +48,7 @@ fun RowScope.AddItem(
         icon = {
             Icon(
                 imageVector = screen.icon,
-                contentDescription = stringResource(R.string.navbar_icon)
+                contentDescription = stringResource(ContentR.string.navbar_icon)
             )
         },
         label = {
