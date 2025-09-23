@@ -19,8 +19,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import klimov.example.aad.features.settings.api.SettingsContainer
-import klimov.example.aad.features.settings.impl.R
 import org.koin.androidx.compose.koinViewModel
+import klimov.example.aad.content.R as ContentR
 
 @Composable
 internal fun SettingsScreen(
@@ -44,7 +44,7 @@ internal fun SettingsScreen(
             onValueChange = {
                 periodic = it
             },
-            label = { Text(stringResource(R.string.periodic_refresh_minutes)) },
+            label = { Text(stringResource(ContentR.string.periodic_refresh_minutes)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         )
         Spacer(Modifier.padding(top = 16.dp))
@@ -55,7 +55,7 @@ internal fun SettingsScreen(
             onValueChange = {
                 delayed = it
             },
-            label = { Text(stringResource(R.string.delay_first_launch_sec)) },
+            label = { Text(stringResource(ContentR.string.delay_first_launch_sec)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         )
         Spacer(Modifier.padding(top = 16.dp))
@@ -64,7 +64,7 @@ internal fun SettingsScreen(
             val delayValue = delayed.toLongOrNull() ?: SettingsContainer.FIRST_LAUNCH_DELAY
             settingsViewModel.saveSetting(periodic = periodicValue, delayed = delayValue)
         }) {
-            Text(stringResource(R.string.save_setting))
+            Text(stringResource(ContentR.string.save_setting))
         }
     }
 }

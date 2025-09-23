@@ -11,9 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import klimov.example.aad.features.settings.api.SettingsNavigation
 import klimov.example.aad.news.list.api.NewsNavigation
+import klimov.example.aad.sdk.ui.AADTheme
 import klimov.example.aad.ui.navigation.BottomBar
 import klimov.example.aad.ui.navigation.BottomBarNavGraph
-import klimov.example.aad.ui.theme.AADTheme
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {

@@ -40,12 +40,14 @@ android {
 }
 
 dependencies {
+    implementation(project(":content"))
     implementation(project(":features:settings:api"))
     implementation(project(":features:settings:impl"))
     implementation(project(":features:news:list:api"))
     implementation(project(":features:news:list:impl"))
     implementation(project(":features:news:worker"))
     implementation(project(":sdk:storage"))
+    implementation(project(":sdk:ui"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
